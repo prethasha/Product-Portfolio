@@ -1,0 +1,371 @@
+/* =====================================================================
+   STYLE.CSS — all the look & feel of the website
+   =====================================================================
+   The easiest changes are in the ":root" block right below:
+   change a colour code there and it updates across the whole site.
+   Colour codes look like #111111 — find new ones at coolors.co
+   ===================================================================== */
+
+:root {
+  /* ---------- BRAND COLOURS (dark theme) ---------- */
+  --color-background: #111111;   /* main page background (black) */
+  --color-background-alt: #161616;/* slightly lighter band for alternate sections */
+  --color-surface: #1B1B1B;      /* cards */
+  --color-surface-hover: #222222;/* cards when you hover */
+  --color-heading: #F4F3EF;      /* headings (off-white) */
+  --color-text: #CFCEC8;         /* body text (soft light grey) */
+  --color-muted: #9A9A93;        /* small/secondary text */
+  --color-border: #2A2A2A;       /* thin card borders */
+  --color-accent: #A3AD8F;       /* olive accent (lightened so it reads on black) */
+  --color-accent-deep: #788267;  /* original olive from the brand palette */
+
+  /* ---------- FONTS ---------- */
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+
+  /* ---------- LAYOUT ---------- */
+  --content-width: 1160px;       /* max width of the page content */
+  --section-space: 104px;        /* space above/below each section (desktop) */
+  --card-radius: 12px;           /* roundness of cards */
+  --button-radius: 8px;          /* roundness of buttons */
+}
+
+/* Smaller spacing on phones */
+@media (max-width: 767.98px) {
+  :root { --section-space: 72px; }
+}
+
+/* =====================================================================
+   BASE (whole page)
+   ===================================================================== */
+html { scroll-behavior: smooth; scroll-padding-top: 80px; } /* stops the sticky menu covering headings */
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { color: var(--color-heading); line-height: 1.2; }
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-heading); }
+
+/* Clear outline when moving around with the keyboard (Tab key) */
+:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 3px;
+  box-shadow: none !important;
+}
+
+::selection { background: var(--color-accent-deep); color: #fff; }
+
+.site-container { max-width: var(--content-width); }
+
+.section { padding: var(--section-space) 0; }
+.section-alt { background: var(--color-background-alt); border-block: 1px solid var(--color-border); }
+
+.text-muted-brand { color: var(--color-muted); }
+
+/* Small uppercase label above headings, e.g. "01 · ABOUT ME" */
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: .9rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+  margin-bottom: 1.25rem;
+  max-width: 20ch;
+}
+
+.skip-link {
+  position: absolute; top: 8px; left: 8px; z-index: 2000;
+  background: var(--color-heading); color: #111; padding: .5rem 1rem; border-radius: var(--button-radius);
+}
+
+/* =====================================================================
+   BUTTONS
+   .btn-brand          = solid off-white button (main action)
+   .btn-outline-brand  = outlined button (secondary action)
+   ===================================================================== */
+.btn { border-radius: var(--button-radius); font-weight: 500; transition: background-color .2s, color .2s, border-color .2s; }
+.btn-lg { padding: .8rem 1.4rem; font-size: 1rem; }
+
+.btn-brand {
+  background: var(--color-heading);
+  color: #111111;
+  border: 1px solid var(--color-heading);
+}
+.btn-brand:hover, .btn-brand:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #111111;
+}
+
+.btn-outline-brand {
+  background: transparent;
+  color: var(--color-heading);
+  border: 1px solid #4A4A4A;
+}
+.btn-outline-brand:hover, .btn-outline-brand:focus-visible {
+  border-color: var(--color-heading);
+  color: var(--color-heading);
+  background: rgba(255,255,255,.04);
+}
+
+/* =====================================================================
+   NAVBAR (top menu)
+   ===================================================================== */
+.site-nav {
+  background: rgba(17,17,17,.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  padding: .9rem 0;
+  transition: border-color .2s, padding .2s;
+}
+.site-nav.is-scrolled { border-bottom-color: var(--color-border); padding: .6rem 0; } /* added by main.js after scrolling */
+
+.wordmark { display: flex; flex-direction: column; line-height: 1.1; text-decoration: none; }
+.wordmark-name { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--color-heading); }
+.wordmark-tag { font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: var(--color-muted); margin-top: 2px; }
+
+.site-nav .nav-link { color: var(--color-text); font-size: .95rem; padding: .5rem .8rem !important; border-radius: 6px; }
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active { color: var(--color-heading); }
+.site-nav .nav-link.active { background: rgba(255,255,255,.05); }
+
+.navbar-toggler { border: 1px solid var(--color-border); color: var(--color-heading); font-size: 1.5rem; padding: .25rem .6rem; }
+.navbar-toggler:focus { box-shadow: none; }
+
+/* Phone menu: give it some breathing room */
+@media (max-width: 991.98px) {
+  .navbar-collapse { padding: 1rem 0 .5rem; }
+  .site-nav .nav-link { padding: .75rem .25rem !important; font-size: 1.05rem; } /* bigger tap targets */
+  .site-nav .btn-brand { margin-top: .75rem; width: 100%; padding: .7rem; }
+}
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+.hero { padding-top: calc(var(--section-space) * .8); }
+
+.display-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  letter-spacing: -.01em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-intro { color: var(--color-text); font-size: 1.15rem; max-width: 34rem; }
+
+.hero-stats { border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+.stat-number { font-family: var(--font-display); font-size: 1.75rem; color: var(--color-heading); margin: 0; }
+.stat-label { font-size: .82rem; color: var(--color-muted); margin: 0; line-height: 1.4; }
+
+/* =====================================================================
+   CAROUSEL (featured case studies in the hero)
+   ===================================================================== */
+.featured-carousel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+.featured-carousel .carousel-img {
+  aspect-ratio: 16 / 10;             /* keeps every slide the same shape */
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid var(--color-border);
+}
+.featured-carousel .slide-body { padding: 1.4rem 1.5rem 3rem; }
+.featured-carousel .slide-body h3 { font-family: var(--font-display); font-size: 1.35rem; margin: .25rem 0 .5rem; }
+.featured-carousel .slide-body p { color: var(--color-muted); font-size: .95rem; margin-bottom: 1rem; }
+
+/* Dots under the slides */
+.featured-carousel .carousel-indicators { margin-bottom: 1rem; z-index: 3; }
+.featured-carousel .carousel-indicators [data-bs-target] {
+  width: 22px; height: 3px; border-radius: 2px; border: 0;
+  background-color: var(--color-muted); opacity: .5;
+}
+.featured-carousel .carousel-indicators .active { background-color: var(--color-heading); opacity: 1; width: 34px; }
+
+/* Arrows: sit on the image area only */
+.featured-carousel .carousel-control-prev,
+.featured-carousel .carousel-control-next { width: 3.5rem; height: 62%; opacity: 1; }
+.carousel-arrow {
+  width: 40px; height: 40px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(17,17,17,.75); border: 1px solid #3A3A3A;
+  color: var(--color-heading); font-size: 1rem; transition: background .2s;
+}
+.carousel-control-prev:hover .carousel-arrow,
+.carousel-control-next:hover .carousel-arrow { background: #111; }
+
+/* =====================================================================
+   ABOUT
+   ===================================================================== */
+.about-photo { border-radius: var(--card-radius); border: 1px solid var(--color-border); width: 100%; height: auto; }
+
+.timeline { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--color-border); }
+.timeline li { position: relative; padding: 0 0 1.5rem 1.5rem; }
+.timeline li::before { /* small olive dot */
+  content: ""; position: absolute; left: -5px; top: .5rem;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--color-accent);
+}
+.timeline-date { font-size: .8rem; color: var(--color-muted); letter-spacing: .05em; }
+.timeline-title { font-size: 1.05rem; font-family: var(--font-body); font-weight: 700; margin: .15rem 0 .3rem; }
+.timeline p { margin: 0; color: var(--color-muted); font-size: .95rem; }
+
+/* =====================================================================
+   CASE STUDIES — filter buttons + card grid (NextLeap-showcase style)
+   ===================================================================== */
+.filter-bar {
+  display: flex; gap: .5rem; flex-wrap: nowrap; overflow-x: auto;   /* swipe sideways on phones */
+  padding: .25rem 0 1.75rem; scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+
+.filter-btn {
+  flex: 0 0 auto;
+  background: transparent; color: var(--color-text);
+  border: 1px solid var(--color-border); border-radius: 999px;
+  padding: .5rem 1.05rem; font-size: .9rem; min-height: 40px;
+  transition: all .2s;
+}
+.filter-btn:hover { border-color: #555; color: var(--color-heading); }
+.filter-btn.active { background: var(--color-heading); color: #111; border-color: var(--color-heading); }
+.filter-btn .count { opacity: .6; margin-left: .3rem; font-size: .8rem; }
+
+.cs-card {
+  height: 100%;
+  display: flex; flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: border-color .25s, background-color .25s, transform .25s;
+}
+.cs-card:hover { border-color: #444; background: var(--color-surface-hover); transform: translateY(-3px); }
+
+.cs-media { position: relative; overflow: hidden; border-bottom: 1px solid var(--color-border); }
+.cs-media img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; transition: transform .5s; }
+.cs-card:hover .cs-media img { transform: scale(1.03); }
+
+.cs-label { /* "Concept project" badge on the image */
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(17,17,17,.85); color: var(--color-heading);
+  border: 1px solid #3A3A3A; border-radius: 6px;
+  font-size: .72rem; padding: .2rem .55rem; letter-spacing: .03em;
+}
+
+.cs-body { padding: 1.35rem 1.4rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
+.cs-category { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); margin-bottom: .4rem; }
+.cs-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: .6rem; }
+.cs-summary { font-size: .93rem; color: var(--color-muted); margin-bottom: 1rem; }
+
+.cs-tags { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+.cs-tags li { font-size: .75rem; color: var(--color-text); background: #252525; border-radius: 5px; padding: .18rem .55rem; }
+
+.cs-actions { margin-top: auto; display: flex; gap: .5rem; align-items: center; }
+.cs-actions .btn { min-height: 42px; }
+.cs-actions .btn-read { flex: 1; }
+
+/* Gentle fade when filtering */
+.cs-col { transition: opacity .25s; }
+.cs-col.is-hidden { display: none; }
+
+/* =====================================================================
+   HOW I THINK
+   ===================================================================== */
+.process-card {
+  height: 100%; position: relative;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--card-radius); padding: 1.6rem 1.4rem;
+  transition: border-color .25s;
+}
+.process-card:hover { border-color: #444; }
+.process-num { position: absolute; top: 1.2rem; right: 1.3rem; font-family: var(--font-display); color: #3E3E3E; font-size: 1.5rem; }
+.process-icon { font-size: 1.6rem; color: var(--color-accent); display: block; margin-bottom: 1rem; }
+.process-card h3 { font-size: 1.1rem; font-family: var(--font-body); font-weight: 700; }
+.process-card p { font-size: .93rem; color: var(--color-muted); margin: 0; }
+
+/* =====================================================================
+   SKILLS & CERTIFICATIONS
+   ===================================================================== */
+.skill-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.skill-list li {
+  border: 1px solid var(--color-border); border-radius: var(--button-radius);
+  padding: .5rem .95rem; font-size: .93rem; color: var(--color-heading); background: var(--color-surface);
+}
+
+.cert-card {
+  display: flex; align-items: center; gap: 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--card-radius); padding: 1.1rem 1.25rem; margin-bottom: .9rem;
+}
+.cert-icon { font-size: 1.6rem; color: var(--color-accent); }
+.cert-card h3 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; margin: 0; }
+.cert-card p { margin: 0; font-size: .85rem; color: var(--color-muted); }
+.cert-link {
+  margin-left: auto; width: 40px; height: 40px; flex-shrink: 0;
+  display: grid; place-items: center; border-radius: 8px; border: 1px solid var(--color-border);
+  color: var(--color-heading); text-decoration: none;
+}
+.cert-link:hover { border-color: var(--color-heading); }
+
+/* =====================================================================
+   CONTACT
+   ===================================================================== */
+.contact-section { border-top: 1px solid var(--color-border); }
+.contact-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.6rem); max-width: 18ch; margin: 0 auto 1.25rem;
+}
+.contact-sub { max-width: 34rem; }
+
+/* =====================================================================
+   FOOTER
+   ===================================================================== */
+.site-footer { border-top: 1px solid var(--color-border); padding: 3.5rem 0 2rem; background: #0C0C0C; }
+.footer-heading { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--color-muted); margin-bottom: .75rem; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: .4rem; }
+.footer-links a { color: var(--color-text); text-decoration: none; }
+.footer-links a:hover { color: var(--color-heading); }
+.footer-copy { margin: 3rem 0 0; font-size: .85rem; color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 1.5rem; }
+
+/* =====================================================================
+   PDF VIEWER POPUP
+   ===================================================================== */
+.pdf-modal { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--card-radius); }
+.pdf-modal .modal-header { border-bottom: 1px solid var(--color-border); gap: .5rem; }
+.pdf-modal .modal-title { font-family: var(--font-display); color: var(--color-heading); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pdf-frame { width: 100%; height: 80vh; border: 0; display: block; background: #2A2A2A; border-radius: 0 0 var(--card-radius) var(--card-radius); }
+@media (max-width: 767.98px) { .pdf-frame { height: calc(100vh - 70px); border-radius: 0; } }
+
+/* =====================================================================
+   SCROLL ANIMATION — elements with class="reveal" fade up into view
+   ===================================================================== */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Respect people who turn off animations in their phone/computer settings */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .cs-card, .cs-media img, .carousel-item { transition: none !important; }
+  .cs-card:hover { transform: none; }
+}

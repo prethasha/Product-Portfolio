@@ -1,0 +1,447 @@
+<!doctype html>
+<!--
+  =====================================================================
+  K R PRETHASHA — PRODUCT PORTFOLIO  (main page)
+  =====================================================================
+  HOW THIS FILE IS ORGANISED (search for these names to jump to them):
+
+    SECTION: NAVBAR          – top menu
+    SECTION: HERO            – name, title, buttons + featured carousel
+    SECTION: ABOUT           – your story and experience
+    SECTION: CASE STUDIES    – the showcase grid (cards come from js/case-studies.js)
+    SECTION: HOW I THINK     – your product process
+    SECTION: SKILLS          – skills and certifications
+    SECTION: CONTACT         – email, LinkedIn, resume
+    SECTION: FOOTER
+    PDF VIEWER POPUP         – the window that opens a case study PDF
+
+  WHAT YOU CAN SAFELY CHANGE:
+    - Any text between tags, e.g. <p>change this text</p>
+    - Links inside href="..."  and images inside src="..."
+  TRY NOT TO CHANGE:
+    - Words inside class="..." and id="..." (they connect to the design & code)
+
+  Colours and fonts live in css/style.css (top of the file).
+  Case studies (PDFs) are added in js/case-studies.js.
+  =====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Browser tab title and Google search description — edit these -->
+  <title>K R Prethasha — Product Manager Portfolio</title>
+  <meta name="description" content="Associate Product Manager and Product Owner. Case studies in fintech, consumer apps and product strategy.">
+
+  <!-- Preview card when the link is shared on LinkedIn / WhatsApp -->
+  <meta property="og:title" content="K R Prethasha — Product Portfolio">
+  <meta property="og:description" content="Product thinking. Thoughtful experiences. Meaningful impact.">
+  <meta property="og:image" content="assets/images/social-preview.svg">
+  <meta name="theme-color" content="#111111">
+
+  <!-- Bootstrap 5 (layout, grid, carousel, menu, popup) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (the small icons, e.g. arrows, LinkedIn) — browse at icons.getbootstrap.com -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Fonts: DM Sans (body text) + Playfair Display (headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Your own styles (load last so they win over Bootstrap) -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<!-- data-bs-theme="dark" switches every Bootstrap part (menus, popups) to dark mode -->
+<body data-bs-theme="dark" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
+
+  <!-- Hidden link for keyboard users: lets them jump past the menu -->
+  <a class="visually-hidden-focusable skip-link" href="#main">Skip to content</a>
+
+  <!-- ================================================================
+       SECTION: NAVBAR
+       To add a menu item: copy one <li class="nav-item">…</li> line
+       and point href="#..." to a section id.
+       ================================================================ -->
+  <nav id="mainNav" class="navbar navbar-expand-lg sticky-top site-nav">
+    <div class="container site-container">
+      <!-- Logo / wordmark -->
+      <a class="navbar-brand wordmark" href="#home" aria-label="K R Prethasha, home">
+        <span class="wordmark-name">K R Prethasha</span>
+        <span class="wordmark-tag">Product Management</span>
+      </a>
+
+      <!-- The ☰ button that appears on phones -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Open menu">
+        <i class="bi bi-list"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Case studies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#process">How I think</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item ms-lg-2"><a class="btn btn-brand btn-sm px-3" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ================================================================
+         SECTION: HERO
+         Left: your name, title, intro, buttons.
+         Right: carousel of featured case studies (set featured: true
+         in js/case-studies.js to show one here).
+         ================================================================ -->
+    <section id="home" class="hero section">
+      <div class="container site-container">
+        <div class="row align-items-center g-4 g-lg-5">
+
+          <!-- Left column -->
+          <div class="col-lg-6 reveal">
+            <p class="eyebrow">Associate Product Manager · Product Owner</p>
+            <h1 class="display-name">K R Prethasha</h1>
+            <p class="lead hero-intro">
+              <!-- Short introduction — 2 or 3 lines is ideal -->
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. I turn customer problems into
+              clear product decisions — backed by research, prioritisation and metrics.
+            </p>
+
+            <!-- Buttons -->
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#work" class="btn btn-brand btn-lg">View my work <i class="bi bi-arrow-up-right ms-1"></i></a>
+              <!-- Replace assets/resume/resume.pdf with your own resume (keep the same file name) -->
+              <a href="assets/resume/resume.pdf" class="btn btn-outline-brand btn-lg" download>
+                <i class="bi bi-download me-1"></i> Download resume
+              </a>
+            </div>
+
+            <!-- Small highlight numbers — change the numbers and words -->
+            <div class="row hero-stats mt-5 g-3">
+              <div class="col-4">
+                <p class="stat-number">3+</p>
+                <p class="stat-label">Years in delivery &amp; ops</p>
+              </div>
+              <div class="col-4">
+                <p class="stat-number">CSPO</p>
+                <p class="stat-label">Certified Scrum Product Owner</p>
+              </div>
+              <div class="col-4">
+                <!-- This number updates itself from the case studies list -->
+                <p class="stat-number" id="caseStudyCount">6</p>
+                <p class="stat-label">Case studies</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: carousel (slides are created by js/main.js) -->
+          <div class="col-lg-6 reveal">
+            <div id="featuredCarousel" class="carousel slide featured-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+              <div class="carousel-indicators" id="carouselIndicators"></div>
+              <div class="carousel-inner" id="carouselSlides"></div>
+
+              <!-- Previous / next arrows -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                <span class="carousel-arrow"><i class="bi bi-chevron-left"></i></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                <span class="carousel-arrow"><i class="bi bi-chevron-right"></i></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION: ABOUT
+         ================================================================ -->
+    <section id="about" class="section section-alt">
+      <div class="container site-container">
+        <div class="row g-4 g-lg-5 align-items-start">
+
+          <!-- Photo: replace assets/images/profile-photo.svg with your photo
+               (e.g. assets/images/me.jpg) and update src below. Portrait, ~800x1000px. -->
+          <div class="col-md-5 col-lg-4 reveal">
+            <img src="assets/images/profile-photo.svg" class="img-fluid about-photo"
+                 alt="Portrait of K R Prethasha" width="800" height="1000" loading="lazy">
+          </div>
+
+          <div class="col-md-7 col-lg-8 reveal">
+            <p class="eyebrow">01 · About me</p>
+            <h2 class="section-title">From coordinating projects to owning products.</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Explain your move into product
+              management here — what pulled you towards it and what you bring from your previous roles.
+            </p>
+            <p>
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. I enjoy solving customer
+              problems through technology and working closely with design, engineering and business teams.
+            </p>
+
+            <!-- Experience timeline. Copy one <li>…</li> block to add another role. -->
+            <ul class="timeline mt-4">
+              <li>
+                <span class="timeline-date">20XX – 20XX</span>
+                <h3 class="timeline-title">Project Coordinator · BrandStory</h3>
+                <p>Lorem ipsum dolor sit amet — coordinated delivery across clients, timelines and teams.</p>
+              </li>
+              <li>
+                <span class="timeline-date">20XX – 20XX</span>
+                <h3 class="timeline-title">Process &amp; Stakeholder Management · Siemens</h3>
+                <p>Lorem ipsum dolor sit amet — aligned stakeholders and improved internal processes.</p>
+              </li>
+              <li>
+                <span class="timeline-date">20XX</span>
+                <h3 class="timeline-title">Certified Scrum Product Owner (CSPO)</h3>
+                <p>Lorem ipsum dolor sit amet — backlog ownership, user stories and agile delivery.</p>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION: CASE STUDIES (showcase grid)
+         The filter buttons and cards are created automatically from
+         js/case-studies.js — you don't need to edit anything here.
+         ================================================================ -->
+    <section id="work" class="section">
+      <div class="container site-container">
+        <div class="row align-items-end mb-4 g-3">
+          <div class="col-lg-7 reveal">
+            <p class="eyebrow">02 · Featured case studies</p>
+            <h2 class="section-title">Problems I've explored, end to end.</h2>
+            <p class="text-muted-brand mb-0">
+              Each case study follows Problem → Insight → Solution → Prioritisation → Metrics → Learnings.
+              Open any card to read the full PDF.
+            </p>
+          </div>
+        </div>
+
+        <!-- Filter buttons (filled in by js/main.js) -->
+        <div class="filter-bar reveal" id="filterBar" role="group" aria-label="Filter case studies by category"></div>
+
+        <!-- Cards (filled in by js/main.js) -->
+        <div class="row g-4" id="caseStudyGrid"></div>
+
+        <!-- Shown if the case studies list can't be read (e.g. a missing comma) -->
+        <p id="caseStudyError" class="text-muted-brand d-none">
+          Case studies couldn't load. Check js/case-studies.js for a missing comma or quote.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION: HOW I THINK ABOUT PRODUCTS
+         Copy one <div class="col-...">…</div> block to add a step.
+         ================================================================ -->
+    <section id="process" class="section section-alt">
+      <div class="container site-container">
+        <div class="reveal mb-5">
+          <p class="eyebrow">03 · How I think about products</p>
+          <h2 class="section-title">A repeatable way to make product decisions.</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg reveal">
+            <div class="process-card">
+              <span class="process-num">01</span>
+              <i class="bi bi-search process-icon" aria-hidden="true"></i>
+              <h3>Discover</h3>
+              <p>User research and problem discovery. Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg reveal">
+            <div class="process-card">
+              <span class="process-num">02</span>
+              <i class="bi bi-sliders process-icon" aria-hidden="true"></i>
+              <h3>Prioritise</h3>
+              <p>RICE scoring and impact vs. effort. Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg reveal">
+            <div class="process-card">
+              <span class="process-num">03</span>
+              <i class="bi bi-signpost-split process-icon" aria-hidden="true"></i>
+              <h3>Plan</h3>
+              <p>Roadmaps and backlog management. Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg reveal">
+            <div class="process-card">
+              <span class="process-num">04</span>
+              <i class="bi bi-graph-up-arrow process-icon" aria-hidden="true"></i>
+              <h3>Measure</h3>
+              <p>Metrics, funnels and experimentation. Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+          <div class="col-sm-12 col-lg reveal">
+            <div class="process-card">
+              <span class="process-num">05</span>
+              <i class="bi bi-card-checklist process-icon" aria-hidden="true"></i>
+              <h3>Specify</h3>
+              <p>User stories and acceptance criteria. Lorem ipsum dolor sit amet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION: SKILLS & CERTIFICATIONS
+         ================================================================ -->
+    <section id="skills" class="section">
+      <div class="container site-container">
+        <div class="row g-4 g-lg-5">
+
+          <div class="col-lg-6 reveal">
+            <p class="eyebrow">04 · Skills</p>
+            <h2 class="section-title">What I bring to a product team.</h2>
+            <!-- Each <li> is one skill pill. Add or delete freely. -->
+            <ul class="skill-list">
+              <li>Product strategy</li>
+              <li>Prioritisation</li>
+              <li>Agile &amp; Scrum</li>
+              <li>Stakeholder management</li>
+              <li>User research</li>
+              <li>UX thinking</li>
+              <li>Data analysis</li>
+              <li>Reporting</li>
+              <li>Jira</li>
+              <li>Figma</li>
+              <li>SQL basics</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <p class="eyebrow">Certifications</p>
+            <!-- Copy one <div class="cert-card">…</div> to add a certificate.
+                 Put the certificate link in href, or remove the <a> if you don't have one. -->
+            <div class="cert-card">
+              <i class="bi bi-patch-check cert-icon" aria-hidden="true"></i>
+              <div>
+                <h3>Certified Scrum Product Owner (CSPO)</h3>
+                <p>Scrum Alliance · 20XX</p>
+              </div>
+              <a href="#" class="cert-link" aria-label="View CSPO certificate"><i class="bi bi-arrow-up-right"></i></a>
+            </div>
+            <div class="cert-card">
+              <i class="bi bi-patch-check cert-icon" aria-hidden="true"></i>
+              <div>
+                <h3>Product Management Certificate</h3>
+                <p>Lorem Institute · 20XX</p>
+              </div>
+              <a href="#" class="cert-link" aria-label="View certificate"><i class="bi bi-arrow-up-right"></i></a>
+            </div>
+            <div class="cert-card">
+              <i class="bi bi-patch-check cert-icon" aria-hidden="true"></i>
+              <div>
+                <h3>Lorem Ipsum Certification</h3>
+                <p>Issuer name · 20XX</p>
+              </div>
+              <a href="#" class="cert-link" aria-label="View certificate"><i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION: CONTACT
+         Change the email in BOTH places (href="mailto:..." and the text).
+         ================================================================ -->
+    <section id="contact" class="section contact-section">
+      <div class="container site-container text-center reveal">
+        <p class="eyebrow">05 · Contact</p>
+        <h2 class="contact-title">Let's build products that solve meaningful problems.</h2>
+        <p class="text-muted-brand mx-auto contact-sub">
+          Open to Associate Product Manager and Product Owner roles. I usually reply within a day.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+          <a href="mailto:hello@example.com" class="btn btn-brand btn-lg"><i class="bi bi-envelope me-2"></i>hello@example.com</a>
+          <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener" class="btn btn-outline-brand btn-lg"><i class="bi bi-linkedin me-2"></i>LinkedIn</a>
+          <a href="assets/resume/resume.pdf" class="btn btn-outline-brand btn-lg" download><i class="bi bi-file-earmark-arrow-down me-2"></i>Resume</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       SECTION: FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="container site-container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <p class="wordmark-name mb-1">K R Prethasha</p>
+          <p class="text-muted-brand mb-0">Product thinking. Thoughtful experiences. Meaningful impact.</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="footer-heading">Explore</p>
+          <ul class="footer-links">
+            <li><a href="#about">About me</a></li>
+            <li><a href="#work">Case studies</a></li>
+            <li><a href="#skills">Skills &amp; certifications</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3">
+          <p class="footer-heading">Let's connect</p>
+          <ul class="footer-links">
+            <li><a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+            <li><a href="mailto:hello@example.com">Email ↗</a></li>
+            <li><a href="assets/resume/resume.pdf" download>Resume ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- The year updates itself -->
+      <p class="footer-copy">© <span id="year">2026</span> K R Prethasha</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       PDF VIEWER POPUP
+       Opens when someone clicks "Read case study" on a laptop/desktop.
+       On phones the PDF opens in a new tab instead (phones show PDFs
+       better that way). Nothing to edit here.
+       ================================================================ -->
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-md-down">
+      <div class="modal-content pdf-modal">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="pdfModalTitle">Case study</h2>
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <a id="pdfOpenTab" href="#" target="_blank" rel="noopener" class="btn btn-sm btn-outline-brand">
+              <i class="bi bi-box-arrow-up-right me-1"></i><span class="d-none d-sm-inline">New tab</span>
+            </a>
+            <a id="pdfDownload" href="#" download class="btn btn-sm btn-outline-brand">
+              <i class="bi bi-download me-1"></i><span class="d-none d-sm-inline">Download</span>
+            </a>
+            <button type="button" class="btn-close ms-1" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="modal-body p-0">
+          <iframe id="pdfFrame" class="pdf-frame" title="Case study PDF" src="about:blank"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: order matters — Bootstrap, then your case study list, then main.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/case-studies.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -228,6 +228,15 @@ a:hover { color: var(--color-heading); }
 .timeline-date { font-size: .8rem; color: var(--color-muted); letter-spacing: .05em; }
 .timeline-title { font-size: 1.05rem; font-family: var(--font-body); font-weight: 700; margin: .15rem 0 .3rem; }
 .timeline p { margin: 0; color: var(--color-muted); font-size: .95rem; }
+.timeline li:last-child { padding-bottom: .25rem; }
+
+/* Education cards (About section) */
+.edu-card {
+  height: 100%;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--card-radius); padding: 1rem 1.15rem;
+}
+.edu-card p { margin: 0; color: var(--color-muted); font-size: .92rem; }
 
 /* =====================================================================
    CASE STUDIES — filter buttons + card grid (NextLeap-showcase style)

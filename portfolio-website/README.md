@@ -46,12 +46,12 @@ portfolio-website/
   },
 ```
 
-That's it — the card, the filter button and (if `featured: true`) the carousel slide appear automatically.
+That's it — the card and (if `featured: true`) the carousel slide appear automatically.
 
 | Field      | What it does |
 |------------|--------------|
 | `title`    | Card heading |
-| `category` | Groups cards under filter buttons (same spelling = same group) |
+| `category` | Small label above the card title, e.g. "Fintech" |
 | `summary`  | Short description on the card |
 | `tags`     | Small labels — any number |
 | `image`    | Cover image path |

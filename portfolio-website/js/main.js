@@ -7,7 +7,7 @@
    - To change colours → edit css/style.css
 
    What this file does:
-   1. Builds the case-study cards + filter buttons from CASE_STUDIES
+   1. Builds the case-study cards from CASE_STUDIES
    2. Builds the hero carousel from case studies marked featured: true
    3. Case study PDFs open in a new browser tab
    4. Small extras: menu shadow on scroll, fade-in animation, footer year
@@ -27,14 +27,12 @@
   const studies = (typeof CASE_STUDIES !== "undefined" && Array.isArray(CASE_STUDIES)) ? CASE_STUDIES : null;
 
   const grid = document.getElementById("caseStudyGrid");
-  const filterBar = document.getElementById("filterBar");
 
   if (!studies) {
     // The list has a typo → show a friendly message instead of a blank space
     document.getElementById("caseStudyError").classList.remove("d-none");
   } else {
     buildCards(studies);
-    buildFilters(studies);
     buildCarousel(studies.filter(function (s) { return s.featured; }));
     document.getElementById("caseStudyCount").textContent = studies.length;
   }
@@ -70,40 +68,6 @@
         "</div>"
       );
     }).join("");
-  }
-
-  /* ===================================================================
-     1b. FILTER BUTTONS ("All", "Fintech", "Consumer app" …)
-     Categories are collected automatically from the list.
-     =================================================================== */
-  function buildFilters(list) {
-    const counts = {};
-    list.forEach(function (s) { counts[s.category] = (counts[s.category] || 0) + 1; });
-    const categories = Object.keys(counts);
-
-    // Hide filters entirely if everything is in one category
-    if (categories.length < 2) { filterBar.classList.add("d-none"); return; }
-
-    let html = '<button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All<span class="count">' + list.length + "</span></button>";
-    categories.forEach(function (c) {
-      html += '<button type="button" class="filter-btn" data-filter="' + safe(c) + '" aria-pressed="false">' + safe(c) + '<span class="count">' + counts[c] + "</span></button>";
-    });
-    filterBar.innerHTML = html;
-
-    filterBar.addEventListener("click", function (e) {
-      const btn = e.target.closest(".filter-btn");
-      if (!btn) return;
-      const filter = btn.getAttribute("data-filter");
-
-      filterBar.querySelectorAll(".filter-btn").forEach(function (b) {
-        b.classList.toggle("active", b === btn);
-        b.setAttribute("aria-pressed", b === btn ? "true" : "false");
-      });
-      grid.querySelectorAll(".cs-col").forEach(function (col) {
-        const match = filter === "all" || col.getAttribute("data-category") === filter;
-        col.classList.toggle("is-hidden", !match);
-      });
-    });
   }
 
   /* ===================================================================

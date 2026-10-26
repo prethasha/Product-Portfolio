@@ -15,7 +15,7 @@
       including the comma), paste it at the end of the list, and change
       the text inside the quotes.
 
-   The website builds the cards, the filter buttons and the carousel
+   The website builds the cards and the carousel
    from this list automatically.
 
    TIPS
@@ -32,7 +32,7 @@ const CASE_STUDIES = [
 
   {
     title: "Fintech: Growing reinvestment from 5% toward 20%",   // Card heading
-    category: "Fintech",                                        // Used for the filter buttons (cards with the same category are grouped)
+    category: "Fintech",                                        // Small label shown above the card title
     summary: "Placeholder — identified funnel drop-offs and proposed targeted experiments to lift reinvestment.",
     tags: ["Funnel analysis", "Experimentation", "Metrics"],    // Small labels on the card (any number)
     image: "assets/images/case-study-1.svg",                    // Cover image path

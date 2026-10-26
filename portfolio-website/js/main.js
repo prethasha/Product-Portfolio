@@ -158,6 +158,16 @@
     }
   });
 
+  // Tools strip: copy each row once so it can scroll in a seamless loop.
+  // The copies are hidden from screen readers so each tool is read only once.
+  document.querySelectorAll(".marquee-track").forEach(function (track) {
+    Array.from(track.children).forEach(function (item) {
+      const copy = item.cloneNode(true);
+      copy.setAttribute("aria-hidden", "true");
+      track.appendChild(copy);
+    });
+  });
+
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

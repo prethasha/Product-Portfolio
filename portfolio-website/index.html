@@ -11,6 +11,7 @@
     SECTION: CASE STUDIES    – the showcase grid (cards come from js/case-studies.js)
     SECTION: HOW I THINK     – your product process
     SECTION: SKILLS          – skills and certifications
+    SECTION: TOOLS           – scrolling strip of tools you use
     SECTION: CONTACT         – email, LinkedIn, resume
     SECTION: FOOTER
 
@@ -49,10 +50,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Your own styles (load last so they win over Bootstrap).
-       The "?v=3" makes browsers fetch the newest file instead of an old saved copy.
+       The "?v=6" makes browsers fetch the newest file instead of an old saved copy.
        After you change style.css, main.js or case-studies.js, raise the number
        (v=3, v=4 …) on ALL THREE lines so visitors see the update straight away. -->
-  <link href="css/style.css?v=3" rel="stylesheet">
+  <link href="css/style.css?v=6" rel="stylesheet">
 </head>
 
 <!-- data-bs-theme="dark" switches every Bootstrap part (menus, popups) to dark mode -->
@@ -386,15 +387,6 @@
               <li>Root cause analysis</li>
               <li>Data-driven decisions</li>
             </ul>
-            <p class="skill-group">Tools</p>
-            <ul class="skill-list">
-              <li>Jira</li>
-              <li>Confluence</li>
-              <li>Figma</li>
-              <li>Microsoft Excel</li>
-              <li>SAP</li>
-              <li>Salesforce</li>
-            </ul>
           </div>
 
           <div class="col-lg-6 reveal">
@@ -437,12 +429,72 @@
     </section>
 
     <!-- ================================================================
+         SECTION: TOOLS  (two scrolling rows of tool names)
+         Tools show in grey and change to their brand colour on hover/tap.
+
+         - To ADD a tool: copy one <li class="tool-chip" …>…</li> line into
+           either row and change:
+             • --brand: #2684FF   → the colour it turns on hover (find a
+                                     brand's colour by searching "<tool> brand colour hex")
+             • bi-kanban          → the icon (browse icons.getbootstrap.com)
+             • the name at the end
+         - To REMOVE a tool: delete its <li …>…</li> line.
+         - You only list each tool ONCE — js/main.js copies the row
+           automatically so it scrolls in a seamless loop.
+         - Speed: change "--speed" on the <div class="marquee" …> lines
+           (bigger number = slower).
+         ================================================================ -->
+    <section id="tools" class="section section-alt">
+      <div class="container site-container">
+        <div class="reveal mb-5">
+          <p class="eyebrow">05 · Tools and technologies</p>
+          <h2 class="section-title">Tools I work with.</h2>
+          <p class="text-muted-brand mb-0 tools-intro">
+            The product, analytics, collaboration and AI tools I use to plan, build, measure and ship.
+          </p>
+        </div>
+      </div>
+
+      <!-- Full-width strip (outside the container so it runs edge to edge) -->
+      <div class="marquee-wrap reveal" aria-label="Tools I work with">
+        <!-- Row 1 — scrolls to the left -->
+        <div class="marquee" style="--speed: 45s">
+          <ul class="marquee-track">
+              <li class="tool-chip" style="--brand: #4C9AFF"><i class="bi bi-kanban" aria-hidden="true"></i>Jira</li>
+              <li class="tool-chip" style="--brand: #579DFF"><i class="bi bi-journal-text" aria-hidden="true"></i>Confluence</li>
+              <li class="tool-chip" style="--brand: #4BA3E3"><i class="bi bi-columns-gap" aria-hidden="true"></i>Trello</li>
+              <li class="tool-chip" style="--brand: #F06A6A"><i class="bi bi-check2-square" aria-hidden="true"></i>Asana</li>
+              <li class="tool-chip" style="--brand: #FFD02F"><i class="bi bi-easel" aria-hidden="true"></i>Miro</li>
+              <li class="tool-chip" style="--brand: #A259FF"><i class="bi bi-vector-pen" aria-hidden="true"></i>Figma</li>
+              <li class="tool-chip" style="--brand: #FFFFFF"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Notion</li>
+              <li class="tool-chip" style="--brand: #F2C811"><i class="bi bi-bar-chart-line" aria-hidden="true"></i>Power BI</li>
+              <li class="tool-chip" style="--brand: #33C481"><i class="bi bi-table" aria-hidden="true"></i>Microsoft Excel</li>
+          </ul>
+        </div>
+        <!-- Row 2 — scrolls to the right (class "marquee-reverse") -->
+        <div class="marquee marquee-reverse" style="--speed: 50s">
+          <ul class="marquee-track">
+              <li class="tool-chip" style="--brand: #F9AB00"><i class="bi bi-graph-up" aria-hidden="true"></i>Google Analytics</li>
+              <li class="tool-chip" style="--brand: #9B85FF"><i class="bi bi-funnel" aria-hidden="true"></i>Mixpanel</li>
+              <li class="tool-chip" style="--brand: #4FC3F7"><i class="bi bi-database" aria-hidden="true"></i>SQL</li>
+              <li class="tool-chip" style="--brand: #0FAAFF"><i class="bi bi-boxes" aria-hidden="true"></i>SAP</li>
+              <li class="tool-chip" style="--brand: #00A1E0"><i class="bi bi-cloud" aria-hidden="true"></i>Salesforce</li>
+              <li class="tool-chip" style="--brand: #E01E5A"><i class="bi bi-chat-dots" aria-hidden="true"></i>Slack</li>
+              <li class="tool-chip" style="--brand: #10A37F"><i class="bi bi-stars" aria-hidden="true"></i>ChatGPT</li>
+              <li class="tool-chip" style="--brand: #D97757"><i class="bi bi-chat-square-text" aria-hidden="true"></i>Claude</li>
+              <li class="tool-chip" style="--brand: #FF5C8A"><i class="bi bi-lightning-charge" aria-hidden="true"></i>Lovable</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
          SECTION: CONTACT
          Change the email in BOTH places (href="mailto:..." and the text).
          ================================================================ -->
     <section id="contact" class="section contact-section">
       <div class="container site-container text-center reveal">
-        <p class="eyebrow">05 · Contact</p>
+        <p class="eyebrow">06 · Contact</p>
         <h2 class="contact-title">Let's build products that solve meaningful problems.</h2>
         <p class="text-muted-brand mx-auto contact-sub">
           Open to Product Owner and Associate Product Manager roles in Bengaluru or remote.
@@ -473,6 +525,7 @@
             <li><a href="#about">About me</a></li>
             <li><a href="#work">Case studies</a></li>
             <li><a href="#skills">Skills &amp; certifications</a></li>
+            <li><a href="#tools">Tools</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-3">
@@ -491,7 +544,7 @@
 
   <!-- Scripts: order matters — Bootstrap, then your case study list, then main.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/case-studies.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/case-studies.js?v=6"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>

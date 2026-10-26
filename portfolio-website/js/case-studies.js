@@ -33,7 +33,7 @@ const CASE_STUDIES = [
   {
     title: "Fintech: Growing reinvestment from 5% toward 20%",   // Card heading
     category: "Fintech",                                        // Used for the filter buttons (cards with the same category are grouped)
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Identified funnel drop-offs and proposed targeted experiments to lift reinvestment.",
+    summary: "Placeholder — identified funnel drop-offs and proposed targeted experiments to lift reinvestment.",
     tags: ["Funnel analysis", "Experimentation", "Metrics"],    // Small labels on the card (any number)
     image: "assets/images/case-study-1.svg",                    // Cover image path
     pdf: "assets/case-studies/case-study-1.pdf",                // PDF path
@@ -44,7 +44,7 @@ const CASE_STUDIES = [
   {
     title: "Swiggy: Rethinking the order-tracking experience",
     category: "Consumer app",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mapped user anxiety points after checkout and redesigned the tracking flow.",
+    summary: "Placeholder — mapped user anxiety points after checkout and redesigned the tracking flow.",
     tags: ["User research", "UX", "RICE"],
     image: "assets/images/case-study-2.svg",
     pdf: "assets/case-studies/case-study-2.pdf",
@@ -53,10 +53,10 @@ const CASE_STUDIES = [
   },
 
   {
-    title: "Siemens: Streamlining stakeholder approvals",
+    title: "BrandStory: Coordinating multi-team client delivery",
     category: "Work project",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Simplified a multi-team approval process and cut turnaround time.",
-    tags: ["Process", "Stakeholders", "Agile"],
+    summary: "Placeholder — how I turned client goals into requirements and aligned developers, designers and SEO teams to deliver on time.",
+    tags: ["Stakeholders", "Requirements", "Delivery"],
     image: "assets/images/case-study-3.svg",
     pdf: "assets/case-studies/case-study-3.pdf",
     label: "Real project",
@@ -64,9 +64,9 @@ const CASE_STUDIES = [
   },
 
   {
-    title: "Product teardown: Lorem ipsum app",
+    title: "Product teardown: App name",
     category: "Teardown",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. A breakdown of onboarding, retention hooks and monetisation.",
+    summary: "Placeholder — a breakdown of onboarding, retention hooks and monetisation.",
     tags: ["Teardown", "Onboarding"],
     image: "assets/images/case-study-4.svg",
     pdf: "assets/case-studies/case-study-4.pdf",
@@ -77,7 +77,7 @@ const CASE_STUDIES = [
   {
     title: "Prioritising a quarterly roadmap",
     category: "Strategy",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scored 20+ backlog items with RICE and impact vs. effort.",
+    summary: "Placeholder — scored 20+ backlog items with RICE and impact vs. effort.",
     tags: ["Roadmap", "RICE", "Backlog"],
     image: "assets/images/case-study-5.svg",
     pdf: "assets/case-studies/case-study-5.pdf",
@@ -88,7 +88,7 @@ const CASE_STUDIES = [
   {
     title: "Growth: Diagnosing an activation funnel",
     category: "Fintech",
-    summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Defined north-star and guardrail metrics for a first-week activation flow.",
+    summary: "Placeholder — defined north-star and guardrail metrics for a first-week activation flow.",
     tags: ["Growth", "Metrics", "A/B testing"],
     image: "assets/images/case-study-6.svg",
     pdf: "assets/case-studies/case-study-6.pdf",

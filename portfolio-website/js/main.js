@@ -9,16 +9,12 @@
    What this file does:
    1. Builds the case-study cards + filter buttons from CASE_STUDIES
    2. Builds the hero carousel from case studies marked featured: true
-   3. Opens PDFs in a popup (desktop) or a new tab (phones)
+   3. Case study PDFs open in a new browser tab
    4. Small extras: menu shadow on scroll, fade-in animation, footer year
    ===================================================================== */
 
 (function () {
   "use strict";
-
-  // On screens narrower than this (in pixels), PDFs open in a new tab
-  // instead of the popup, because phone browsers display PDFs better that way.
-  const PHONE_BREAKPOINT = 768;
 
   // ----- Helper: makes text safe to put inside HTML -----
   function safe(text) {
@@ -63,8 +59,8 @@
               '<p class="cs-summary">' + safe(s.summary) + "</p>" +
               '<ul class="cs-tags">' + tags + "</ul>" +
               '<div class="cs-actions">' +
-                // Works as a normal link (new tab) if the popup can't be used
-                '<a class="btn btn-brand btn-read js-open-pdf" href="' + safe(s.pdf) + '" target="_blank" rel="noopener" data-index="' + i + '">' +
+                // target="_blank" = open the PDF in a new tab
+                '<a class="btn btn-brand btn-read " href="' + safe(s.pdf) + '" target="_blank" rel="noopener">' +
                   'Read case study <i class="bi bi-arrow-up-right ms-1"></i></a>' +
                 '<a class="btn btn-outline-brand" href="' + safe(s.pdf) + '" download aria-label="Download ' + safe(s.title) + ' PDF">' +
                   '<i class="bi bi-download"></i></a>' +
@@ -121,7 +117,6 @@
     const dots = document.getElementById("carouselIndicators");
 
     slides.innerHTML = featured.map(function (s, i) {
-      const index = studies.indexOf(s);
       return (
         '<div class="carousel-item' + (i === 0 ? " active" : "") + '">' +
           '<img src="' + safe(s.image) + '" class="carousel-img" alt="Cover image for ' + safe(s.title) + '">' +
@@ -129,7 +124,7 @@
             '<p class="cs-category mb-0">' + safe(s.category) + (s.label ? " · " + safe(s.label) : "") + "</p>" +
             "<h3>" + safe(s.title) + "</h3>" +
             "<p>" + safe(s.summary) + "</p>" +
-            '<a class="btn btn-outline-brand btn-sm js-open-pdf" href="' + safe(s.pdf) + '" target="_blank" rel="noopener" data-index="' + index + '">' +
+            '<a class="btn btn-outline-brand btn-sm " href="' + safe(s.pdf) + '" target="_blank" rel="noopener">' +
               'Read case study <i class="bi bi-arrow-up-right ms-1"></i></a>' +
           "</div>" +
         "</div>"
@@ -154,30 +149,11 @@
   }
 
   /* ===================================================================
-     3. PDF VIEWER
-     Desktop/tablet → popup with the PDF inside.
-     Phone          → the link simply opens the PDF in a new tab.
+     3. PDF LINKS
+     Every "Read case study" button is a normal link with target="_blank",
+     so the PDF opens in a NEW BROWSER TAB using the browser's own PDF
+     viewer (zoom, scroll, download all built in). Nothing else needed here.
      =================================================================== */
-  const modalEl = document.getElementById("pdfModal");
-  const frame = document.getElementById("pdfFrame");
-  const pdfModal = new bootstrap.Modal(modalEl);
-
-  document.addEventListener("click", function (e) {
-    const link = e.target.closest(".js-open-pdf");
-    if (!link || !studies) return;
-    if (window.innerWidth < PHONE_BREAKPOINT) return; // let the phone open it in a new tab
-
-    e.preventDefault();
-    const s = studies[Number(link.getAttribute("data-index"))];
-    document.getElementById("pdfModalTitle").textContent = s.title;
-    document.getElementById("pdfOpenTab").href = s.pdf;
-    document.getElementById("pdfDownload").href = s.pdf;
-    frame.src = s.pdf + "#view=FitH"; // fit the page width
-    pdfModal.show();
-  });
-
-  // Empty the viewer when the popup closes (stops it using memory)
-  modalEl.addEventListener("hidden.bs.modal", function () { frame.src = "about:blank"; });
 
   /* ===================================================================
      4. SMALL EXTRAS

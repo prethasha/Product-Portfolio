@@ -59,7 +59,7 @@ That's it — the card, the filter button and (if `featured: true`) the carousel
 | `label`    | Badge on the image, e.g. "Concept project". Use `""` for none |
 | `featured` | `true` = also appears in the top carousel |
 
-**How visitors open it:** on laptops a popup shows the PDF with *New tab* and *Download* buttons; on phones it opens in a new tab (phones display PDFs better that way).
+**How visitors open it:** clicking *Read case study* opens the PDF in a new browser tab; the small ⬇ button downloads it.
 
 **To replace a sample case study**, just overwrite e.g. `assets/case-studies/case-study-1.pdf` with your file using the same name — no code change needed.
 

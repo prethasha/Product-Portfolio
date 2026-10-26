@@ -230,6 +230,32 @@ a:hover { color: var(--color-heading); }
 .timeline p { margin: 0; color: var(--color-muted); font-size: .95rem; }
 .timeline li:last-child { padding-bottom: .25rem; }
 
+/* Left column of About: photo + quick facts.
+   On tablets/laptops it "sticks" just below the menu while the text scrolls. */
+@media (min-width: 768px) {
+  .about-aside { position: sticky; top: 100px; }
+}
+.about-photo { aspect-ratio: 4 / 5; object-fit: cover; }  /* keeps any photo you add the same shape */
+
+.facts-card {
+  margin-top: 1rem;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--card-radius); padding: 1.1rem 1.2rem 1.2rem;
+}
+.facts-list { list-style: none; padding: 0; margin: 0; }
+.facts-list li {
+  display: flex; gap: .85rem; align-items: flex-start;
+  padding: .7rem 0; border-bottom: 1px solid var(--color-border);
+  font-size: .95rem; color: var(--color-heading); line-height: 1.4;
+}
+.facts-list li:first-child { padding-top: .1rem; }
+.facts-list li:last-child { border-bottom: 0; }
+.facts-list i { color: var(--color-accent); font-size: 1.1rem; margin-top: .1rem; }
+.facts-list span { /* small grey label, e.g. "Based in" */
+  display: block; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--color-muted); margin-bottom: .15rem;
+}
+
 /* Education cards (About section) */
 .edu-card {
   height: 100%;

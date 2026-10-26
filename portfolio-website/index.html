@@ -49,10 +49,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Your own styles (load last so they win over Bootstrap).
-       The "?v=2" makes browsers fetch the newest file instead of an old saved copy.
+       The "?v=3" makes browsers fetch the newest file instead of an old saved copy.
        After you change style.css, main.js or case-studies.js, raise the number
        (v=3, v=4 …) on ALL THREE lines so visitors see the update straight away. -->
-  <link href="css/style.css?v=2" rel="stylesheet">
+  <link href="css/style.css?v=3" rel="stylesheet">
 </head>
 
 <!-- data-bs-theme="dark" switches every Bootstrap part (menus, popups) to dark mode -->
@@ -168,13 +168,38 @@
          ================================================================ -->
     <section id="about" class="section section-alt">
       <div class="container site-container">
-        <div class="row g-4 g-lg-5 align-items-start">
+        <div class="row g-4 g-lg-5">
 
           <!-- Photo: replace assets/images/profile-photo.svg with your photo
                (e.g. assets/images/me.jpg) and update src below. Portrait, ~800x1000px. -->
           <div class="col-md-5 col-lg-4 reveal">
-            <img src="assets/images/profile-photo.svg" class="img-fluid about-photo"
-                 alt="Portrait of K R Prethasha" width="800" height="1000" loading="lazy">
+            <!-- "about-aside" stays in view while you scroll the text on the right (laptops/tablets only) -->
+            <div class="about-aside">
+              <img src="assets/images/profile-photo.svg" class="img-fluid about-photo"
+                   alt="Portrait of K R Prethasha" width="800" height="1000" loading="lazy">
+
+              <!-- QUICK FACTS card — edit the text after each label.
+                   Copy one <li>…</li> to add a row; browse icons at icons.getbootstrap.com -->
+              <div class="facts-card">
+                <ul class="facts-list">
+                  <li>
+                    <i class="bi bi-geo-alt" aria-hidden="true"></i>
+                    <div><span>Based in</span>Bengaluru, India</div>
+                  </li>
+                  <li>
+                    <i class="bi bi-briefcase" aria-hidden="true"></i>
+                    <div><span>Currently</span>Senior Process Associate, Siemens</div>
+                  </li>
+                  <li>
+                    <i class="bi bi-patch-check" aria-hidden="true"></i>
+                    <div><span>Certified</span>Scrum Product Owner (CSPO®)</div>
+                  </li>
+                </ul>
+                <a href="assets/resume/resume.pdf" class="btn btn-brand w-100 mt-3" download>
+                  <i class="bi bi-download me-1"></i> Download resume
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="col-md-7 col-lg-8 reveal">
@@ -466,7 +491,7 @@
 
   <!-- Scripts: order matters — Bootstrap, then your case study list, then main.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/case-studies.js?v=2"></script>
-  <script src="js/main.js?v=2"></script>
+  <script src="js/case-studies.js?v=3"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>

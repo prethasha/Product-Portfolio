@@ -23,18 +23,39 @@
     return div.innerHTML;
   }
 
+  // ----- Fade-in on scroll for anything with class="reveal" -----
+  // This runs FIRST so the page is always visible, even if something
+  // further down has a problem (e.g. a typo in case-studies.js).
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
   // ----- Read the case studies list (from js/case-studies.js) -----
   const studies = (typeof CASE_STUDIES !== "undefined" && Array.isArray(CASE_STUDIES)) ? CASE_STUDIES : null;
 
   const grid = document.getElementById("caseStudyGrid");
 
-  if (!studies) {
-    // The list has a typo → show a friendly message instead of a blank space
-    document.getElementById("caseStudyError").classList.remove("d-none");
-  } else {
+  try {
+    if (!studies) throw new Error("CASE_STUDIES list missing or has a typo");
     buildCards(studies);
     buildCarousel(studies.filter(function (s) { return s.featured; }));
     document.getElementById("caseStudyCount").textContent = studies.length;
+  } catch (err) {
+    // Something is wrong with the list → show a friendly message instead of a blank space
+    console.error(err);
+    document.getElementById("caseStudyError").classList.remove("d-none");
+    document.getElementById("featuredCarousel").classList.add("d-none");
   }
 
   /* ===================================================================
@@ -136,22 +157,6 @@
       bootstrap.Collapse.getOrCreateInstance(navMenu).hide();
     }
   });
-
-  // Fade-in on scroll for anything with class="reveal"
-  const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (el) { observer.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
-  }
 
   // Footer year
   document.getElementById("year").textContent = new Date().getFullYear();

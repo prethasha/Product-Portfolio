@@ -63,6 +63,8 @@ That's it — the card and (if `featured: true`) the carousel slide appear autom
 
 **To replace a sample case study**, just overwrite e.g. `assets/case-studies/case-study-1.pdf` with your file using the same name — no code change needed.
 
+> **Changes not showing?** Browsers keep old copies of files for a few minutes. In `index.html`, search for `?v=` and raise the number on all three lines (e.g. `?v=2` → `?v=3`) whenever you change `style.css`, `main.js` or `case-studies.js`. Press **Ctrl + Shift + R** to refresh without the old copy.
+
 > **Cards disappeared?** It's almost always a missing comma `},` or a missing quote `"` in `case-studies.js`. The page shows a message when this happens.
 
 ---
